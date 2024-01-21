@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\PageController::class, 'Homepage'])->name('homepage');
-Route::get('/profile/{id}', [App\Http\Controllers\HomeController::class, 'Profile'])->name('profile');
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'Profile'])->name('profile');
 Route::post('/upload-profile-image', [App\Http\Controllers\PageController::class, 'uploadProfileImage'])->name('upload.profile.image');
 Route::post('/UserDetails', [App\Http\Controllers\PageController::class, 'userDetails'])->name('UserDetails');
 Route::get('/book-property', [App\Http\Controllers\HomeController::class, 'PropertyBook'])->name('PropertyBook');

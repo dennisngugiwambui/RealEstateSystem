@@ -15,12 +15,12 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link active" href="{{ route('profile', [auth()->user()->id]) }}">
+                <a class="sidebar-link active" href="{{ route('profile') }}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
                 </a>
             </li>
 
-        
+
 
             <!-- Add Book Property Link -->
             <li class="sidebar-item">

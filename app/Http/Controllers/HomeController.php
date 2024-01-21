@@ -30,7 +30,7 @@ class HomeController extends Controller
         return view('Users.index');
     }
 
-    public function Profile($id)
+    public function Profile()
     {
         // $userDetails=UserDetail::all();
         $userId = auth()->user()->id;
@@ -38,10 +38,10 @@ class HomeController extends Controller
 
         $sessionId = Session::getId();
 
-        dd($sessionId);
-        dd($userId);
+        //dd($sessionId);
 
-        // return view('Users.profile', compact('userDetails'));
+
+        return view('Users.profile', compact('userDetails', 'sessionId'));
 
     }
 
