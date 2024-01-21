@@ -20,8 +20,16 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/Files', [App\Http\Controllers\PageController::class, 'Files']);
+Route::get('/user/{username}', [App\Http\Controllers\HomeController::class, 'getUserr'])->name('getUserr');
+
+
+
 Route::get('/', [App\Http\Controllers\PageController::class, 'Homepage'])->name('homepage');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'Profile'])->name('profile');
 Route::post('/upload-profile-image', [App\Http\Controllers\PageController::class, 'uploadProfileImage'])->name('upload.profile.image');
 Route::post('/UserDetails', [App\Http\Controllers\PageController::class, 'userDetails'])->name('UserDetails');
 Route::get('/book-property', [App\Http\Controllers\HomeController::class, 'PropertyBook'])->name('PropertyBook');
+Route::post('/UserDelete/{id}', [App\Http\Controllers\PageController::class, 'deleteUserDetail'])->name('userDelete');
+

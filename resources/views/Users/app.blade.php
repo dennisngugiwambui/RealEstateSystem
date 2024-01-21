@@ -11,6 +11,10 @@
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 	<link rel="shortcut icon" href="{{ asset('Users/static/img/icons/icon-48x48.png') }}" />
 
 	{{-- <link rel="canonical" href="https://demo-basic.adminkit.io/" /> --}}
@@ -197,13 +201,14 @@
 			<main class="content">
 				@yield('content')
             </main>
+        </div>
+    </div>
 
-
+            <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+            <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+            {!! Toastr::message() !!}
 	<script src="{{ asset('Users/static/js/app.js') }}"></script>
 
-	<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-        {!! Toastr::message() !!}
 
 
 

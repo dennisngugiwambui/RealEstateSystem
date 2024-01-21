@@ -2,8 +2,10 @@
 
 @section('content')
 
-    <div class="container-fluid">
 
+
+    <div class="container-fluid">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
         <h1 class="h3 mb-3"><strong>Tenants</strong> Dashboard</h1>
 
         <!-- Tenant Booking Form -->
@@ -36,12 +38,22 @@
                             <div class="d-md-flex">
                                 <div class="mb-3 me-md-3">
                                     <label for="apartmentName" class="form-label">Apartment Name</label>
-                                    <input type="text" class="form-control" id="apartmentName" name="apartmentName" placeholder="Enter Apartment Name">
+                                    <select class="form-select select2" id="apartment" name="apartment" onchange="updateRoomOptions(this.value)">
+                                        <option value="" selected>Select Apartment</option>
+                                        <option value="apartment1">Apartment 1</option>
+                                        <option value="apartment2">Apartment 2</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
                                 </div>
+
                                 <div class="mb-3 me-md-3">
                                     <label for="room" class="form-label">Room</label>
-                                    <input type="text" class="form-control" id="room" name="room" placeholder="Enter Room">
+                                    <select class="form-select" id="room" name="room">
+                                        <option value="" selected>Select Room</option>
+                                        <!-- Options will be dynamically updated using JavaScript -->
+                                    </select>
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="price" class="form-label">Price</label>
                                     <input type="text" class="form-control" id="price" name="price" value="$1500" readonly>
@@ -58,23 +70,9 @@
                             </div>
 
 
-                            <div class="mb-3">
-                                <label for="apartment" class="form-label">Apartment</label>
-                                <select class="form-select" id="apartment" name="apartment" onchange="updateRoomOptions(this.value)">
-                                    <option value="" selected>Select Apartment</option>
-                                    <option value="apartment1">Apartment 1</option>
-                                    <option value="apartment2">Apartment 2</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="room" class="form-label">Room</label>
-                                <select class="form-select" id="room" name="room">
-                                    <option value="" selected>Select Room</option>
-                                    <!-- Options will be dynamically updated using JavaScript -->
-                                </select>
-                            </div>
+
+
 
                             <!-- Add more fields as needed -->
 
@@ -86,6 +84,8 @@
         </div>
 
     </div>
+
+
 
         <!-- Booked Apartments Card -->
         <div class="row mt-4">
@@ -183,6 +183,33 @@
                     console.log('Selected Apartment:', selectedApartment);
                     console.log('Vacant Rooms:', vacantRooms[selectedApartment]);
                 }
+
+
+
+
+
+
+
             </script>
+
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+
+
+
+
+
+            <script>
+                $(document).ready(function () {
+
+
+                    $(".select2").select2();
+                });
+            </script>
+
+
 
 @endsection

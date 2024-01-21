@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -19,6 +20,28 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+
+
+
+
+
+
+
+public function getUserr($username)
+{
+    $users = User::where('name', 'like', '%' . $username . '%')->get();
+
+
+    dd(  $users);
+
+
+}
+
+
+
+
+
+
 
     /**
      * Show the application dashboard.
@@ -37,6 +60,7 @@ class HomeController extends Controller
         $userDetails = UserDetail::where('userid', $userId)->get();
 
         $sessionId = Session::getId();
+
 
         //dd($sessionId);
 

@@ -19,7 +19,7 @@
                     @else
                     <img src="{{ asset('Users/static/img/avatars/avatar-4.jpg') }}" alt="Profile Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
                     @endif
-                    
+
                     <h4 class="card-title">
                         <i class="fas fa-user"></i> {{ Auth::user()->name }}
                     </h4>
@@ -52,9 +52,33 @@
                             <p class="card-text">{{ $detail->detail }}</p>
                             <div class="d-flex justify-content-between">
                                 <a href="#" class="btn btn-primary">Update</a>
-                                
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
+
+                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUser_{{ $detail->id }}"> <i class="fa fa-trash"></i> </button>
+
+
+                                <!-- delete Modal -->
+                                <div class="modal fade" id="deleteUser_{{ $detail->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Details</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('userDelete',['id'=>$detail->id]) }}" method="post" enctype="multipart/form-data">
+                                                    @csrf
+
+
+                                                    <p> Are you sure you want to delete this {{ $detail->detail }}</p>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger" >Delete User</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -99,14 +123,14 @@
 
                 <form action="{{ route('upload.profile.image') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                
+
                     <div class="mb-3">
                         <label for="newProfileImage" class="form-label">Choose New Profile Image</label>
                         <input type="file" class="form-control-file" id="newProfileImage" name="image">
                     </div>
                     <button type="submit" class="btn btn-primary">Upload</button>
                 </form>
-                
+
 
             </div>
         </div>

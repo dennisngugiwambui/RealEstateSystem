@@ -15,7 +15,7 @@ class PageController extends Controller
     public function Homepage()
     {
         Toastr::success('user detail inserted successfully', 'success');
-        
+
         return view('Homepage.Index');
     }
 
@@ -24,19 +24,19 @@ class PageController extends Controller
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
+
         $user = auth()->user();
-    
+
         $profileImage = new ProfileImage();
         $profileImage->userid = $user->id;
         $profileImage->username = $user->name;
-    
+
         $filename = time() . '.' . $request->image->getClientOriginalExtension();
         $request->image->move('imagename', $filename);
-    
+
         $profileImage->image = $filename;
         $profileImage->save();
-    
+
         return redirect()->back()->with('success', 'Profile image uploaded successfully!');
     }
 
@@ -64,4 +64,29 @@ class PageController extends Controller
 
         return redirect()->back()->with('success', 'user details inserted successfully');
     }
+
+
+
+    public function deleteUserDetail(Request $request)
+    {
+        $users = UserDetail::find($request->id);
+        if(!$users){
+            //return back()->with('Error', 'User not found');
+            return $users;
+            Toastr::error('User detail not found', 'error');
+
+        }
+        $users ->delete();
+        $message='user deleted successfully';
+        Toastr::success('success', $message);
+        return back()->with('success', $message);
+        //$request=Store::where($request->id)->delete();
+    }
+
+    public function Files()
+    {
+        return view('file');
+    }
+
+
 }
