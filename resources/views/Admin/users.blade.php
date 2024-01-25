@@ -12,10 +12,7 @@
         .user-table {
             width: 100%;
             margin-bottom: 20px;
-            border-collapse: collapse;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            overflow-x: auto; /* Add this to enable horizontal scrolling on small screens */
         }
 
         .user-table thead tr {
@@ -26,7 +23,7 @@
 
         .user-table th,
         .user-table td {
-            padding: 15px;
+            padding: 10px; /* Adjust the padding to make cells smaller */
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
@@ -86,7 +83,8 @@
                 <!-- Add your search form here -->
                 <div class="search-container" style="padding-top: 20px;">
                     <div class="input-group">
-                        <input type="text" id="search_input_all" onkeyup="FilterkeyWord_all_table()" name="search" class="form-control" placeholder="Search by name or email">
+                        <input type="text" id="search_input_all" onkeyup="FilterkeyWord_all_table()" name="search"
+                               class="form-control" placeholder="Search by name or email">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button" id="searchIcon">
                                 <i class="fa fa-search"></i>
@@ -96,37 +94,45 @@
                 </div>
             </div>
 
-            <table class="table user-table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Permission</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Loop through your users data -->
-                @foreach($users as $user)
-                    <tr class="user-row" data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-status="{{ $user->status }}">
-                        <td>{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>
-                            <span class="badge badge-primary">{{ $user->usertype }}</span>
-                        </td>
-                        <td>
-                            @if($user->status === 'active')
-                                <span class="badge badge-primary">Active</span>
-                            @else
-                                <span class="badge badge-danger">Inactive</span>
-                            @endif
-                        </td>
+            <div class="table-responsive">
+                <table class="table user-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Permission</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <!-- Loop through your users data -->
+                    @foreach($users as $user)
+                        <tr data-id="{{ $user->id }}" class="user-row">
+                            <td><a href="{{ route('user_details', ['id' => $user->id]) }}">{{ $user->id }}</a></td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>
+                                <span class="badge badge-primary">{{ $user->usertype }}</span>
+                            </td>
+                            <td>
+                                @if($user->status === 'active')
+                                    <span class="badge badge-primary">Active</span>
+                                @else
+                                    <span class="badge badge-danger">Inactive</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{route('user_details', ['id' => $user->id])}}" class="btn btn-sm btn-info">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
@@ -177,23 +183,6 @@
         }
     </script>
 
-    <script>
-        $(document).ready(function() {
-            // Add click event for user rows
-            $(".user-row").on("click", function() {
-                // Extract user details from the data attributes
-                var userId = $(this).data("id");
-                var userName = $(this).data("name");
-                var userEmail = $(this).data("email");
-                var userStatus = $(this).data("status");
 
-                // Construct the URL with user details
-                var redirectUrl = '/user_details/' + userId + '?name=' + userName + '&email=' + userEmail + '&status=' + userStatus;
-
-                // Redirect to user_details.blade.php with user details
-                window.location.href = redirectUrl;
-            });
-        });
-    </script>
 
 @endsection

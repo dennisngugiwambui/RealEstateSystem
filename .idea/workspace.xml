@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e20a21fc-9f41-4668-9d1d-00523f9ce25a" name="Changes" comment="additional codes">
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/user_details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/user_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/user_details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/users.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +219,7 @@
       <workItem from="1706078100644" duration="645000" />
       <workItem from="1706111391040" duration="20000" />
       <workItem from="1706112799221" duration="2770000" />
-      <workItem from="1706182465435" duration="14243000" />
+      <workItem from="1706182465435" duration="21734000" />
     </task>
     <task id="LOCAL-00001" summary="additional codes">
       <option name="closed" value="true" />
@@ -241,7 +245,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706215769579</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="additional codes">
+      <option name="closed" value="true" />
+      <created>1706216358613</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706216358613</updated>
+    </task>
+    <task id="LOCAL-00005" summary="additional codes">
+      <option name="closed" value="true" />
+      <created>1706216387214</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706216387214</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

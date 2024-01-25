@@ -139,15 +139,15 @@ class HomeController extends Controller
             if ($usertype != 'admin') {
                 return view('Users.index');
             } else {
-                $user = User::find($id);
+                $users = User::find($id);
 
-                if (!$user) {
+                if (!$users) {
                     // Handle the case where the user with the specified ID is not found
                     // You might want to redirect or show an error message
-                    return redirect()->route('admin.dashboard')->with('error', 'User not found');
+                    return view('Admin.index')->with('error', 'User not found');
                 }
 
-                return view('Admin.user_details', compact('user'));
+                return view('Admin.user_details', compact('users'));
             }
         } else {
             return view('auth.login');

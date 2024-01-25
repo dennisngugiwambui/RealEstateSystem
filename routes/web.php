@@ -40,3 +40,8 @@ Route::get('/contact', [App\Http\Controllers\PageController::class, 'contact'])-
 Route::get('/view_users', [App\Http\Controllers\HomeController::class, 'users'])->name('users');
 Route::get('/permissions', [App\Http\Controllers\HomeController::class, 'permissions'])->name('permissions');
 
+Route::get('/user_details/{id}', [App\Http\Controllers\HomeController::class, 'user_details'])->name('user_details');
+Route::post('/usertype_change/{id}',[App\Http\Controllers\PageController::class, 'ChangeUsertype'])->name('usertype_change');
+
+Route::post('/status_change/{id}', [App\Http\Controllers\PageController::class, 'status_change'])->name('status_change');
+

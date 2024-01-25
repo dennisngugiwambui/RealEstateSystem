@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\ProfileImage;
 use App\Models\UserDetail;
@@ -100,6 +101,46 @@ class PageController extends Controller
     public function contact()
     {
         return view('Homepage.contact-us');
+    }
+
+
+
+    public function ChangeUsertype(Request $request)
+    {
+        $users = User::find($request->id);
+        if(!$users){
+            $message='user update failed';
+            //alert()->info('NOTE', $message);
+            Toastr::error($message, 'error');
+            return back()->with('Error', $message);
+        }
+        $users->usertype=$request->newUsertype;
+        $users ->update();
+
+        $message = 'usertype updated successfully';
+        //alert()->success('Success',$message)->persistent();
+        Toastr::success($message,'success');
+        //FacadesAlert::alert('success', $message)->persistent();//so wako wrong kwa iyo do
+        return back()->with('success', $message);
+    }
+
+    public function status_change(Request $request)
+    {
+        $users = User::find($request->id);
+        if(!$users){
+            $message='status update failed';
+            //alert()->info('NOTE', $message);
+            Toastr::error($message, 'error');
+            return back()->with('Error', $message);
+        }
+        $users->status=$request->isActive;
+        $users ->update();
+
+        $message = 'user status updated successfully';
+        //alert()->success('Success',$message)->persistent();
+        Toastr::success($message,'success');
+        //FacadesAlert::alert('success', $message)->persistent();//so wako wrong kwa iyo do
+        return back()->with('success', $message);
     }
 
 
