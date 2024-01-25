@@ -84,10 +84,15 @@
         <div class="main-content-inner">
             <div class="search-section">
                 <!-- Add your search form here -->
-                <div class="search-container">
-                    <input type="text" id="search_input_all" nkeyup="FilterkeyWord_all_table()" name="search" placeholder="Search by name or email">
-                    <i id="searchIcon" class="fa fa-search"></i>
-
+                <div class="search-container" style="padding-top: 20px;">
+                    <div class="input-group">
+                        <input type="text" id="search_input_all" onkeyup="FilterkeyWord_all_table()" name="search" class="form-control" placeholder="Search by name or email">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="searchIcon">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -104,7 +109,7 @@
                 <tbody>
                 <!-- Loop through your users data -->
                 @foreach($users as $user)
-                    <tr>
+                    <tr class="user-row" data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-status="{{ $user->status }}">
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
@@ -130,54 +135,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancytable/FancyTable/fancyTable.js"></script>
 
-
     <script>
         // All Table search script
         function FilterkeyWord_all_table() {
-
-// Count td if you want to search on all table instead of specific column
-
+            // Count td if you want to search on all table instead of specific column
             var count = $('.table').children('tbody').children('tr:first-child').children('td').length;
 
             // Declare variables
             var input, filter, table, tr, td, i;
             input = document.getElementById("search_input_all");
-            var input_value =     document.getElementById("search_input_all").value;
+            var input_value = document.getElementById("search_input_all").value;
             filter = input.value.toLowerCase();
-            if(input_value !=''){
-                table = document.getElementById("table-id");
+            if (input_value != '') {
+                table = document.querySelector(".table"); // Change to querySelector
                 tr = table.getElementsByTagName("tr");
 
                 // Loop through all table rows, and hide those who don't match the search query
                 for (i = 1; i < tr.length; i++) {
-
                     var flag = 0;
-
-                    for(j = 0; j < count; j++){
+                    for (j = 0; j < count; j++) {
                         td = tr[i].getElementsByTagName("td")[j];
                         if (td) {
-
                             var td_text = td.innerHTML;
                             if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
-                                //var td_text = td.innerHTML;
-                                //td.innerHTML = 'shaban';
                                 flag = 1;
                             } else {
-                                //DO NOTHING
+                                // DO NOTHING
                             }
                         }
                     }
-                    if(flag==1){
+                    if (flag == 1) {
                         tr[i].style.display = "";
-                    }else {
+                    } else {
                         tr[i].style.display = "none";
                     }
                 }
-            }else {
-                //RESET TABLE
+            } else {
+                // RESET TABLE
                 $('#maxRows').trigger('change');
             }
         }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Add click event for user rows
+            $(".user-row").on("click", function() {
+                // Extract user details from the data attributes
+                var userId = $(this).data("id");
+                var userName = $(this).data("name");
+                var userEmail = $(this).data("email");
+                var userStatus = $(this).data("status");
+
+                // Construct the URL with user details
+                var redirectUrl = '/user_details/' + userId + '?name=' + userName + '&email=' + userEmail + '&status=' + userStatus;
+
+                // Redirect to user_details.blade.php with user details
+                window.location.href = redirectUrl;
+            });
+        });
     </script>
 
 @endsection
