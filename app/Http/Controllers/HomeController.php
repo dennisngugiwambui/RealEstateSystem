@@ -131,5 +131,29 @@ class HomeController extends Controller
 
     }
 
+    public function user_details($id)
+    {
+        if (Auth::check()) {
+            $usertype = Auth::user()->usertype;
+
+            if ($usertype != 'admin') {
+                return view('Users.index');
+            } else {
+                $user = User::find($id);
+
+                if (!$user) {
+                    // Handle the case where the user with the specified ID is not found
+                    // You might want to redirect or show an error message
+                    return redirect()->route('admin.dashboard')->with('error', 'User not found');
+                }
+
+                return view('Admin.user_details', compact('user'));
+            }
+        } else {
+            return view('auth.login');
+        }
+    }
+
+
 
 }
