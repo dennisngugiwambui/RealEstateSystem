@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e20a21fc-9f41-4668-9d1d-00523f9ce25a" name="Changes" comment="additional codes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ApartmentImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ApartmentImage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2024_01_26_100746_create_apartment_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_01_26_100746_create_apartment_images_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/apartment-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/apartment-details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="e20a21fc-9f41-4668-9d1d-00523f9ce25a" name="Changes" comment="additional codes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -221,7 +212,7 @@
       <workItem from="1706111391040" duration="20000" />
       <workItem from="1706112799221" duration="2770000" />
       <workItem from="1706182465435" duration="21912000" />
-      <workItem from="1706251237937" duration="14785000" />
+      <workItem from="1706251237937" duration="15256000" />
     </task>
     <task id="LOCAL-00001" summary="additional codes">
       <option name="closed" value="true" />
@@ -287,7 +278,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706263696541</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="additional codes">
+      <option name="closed" value="true" />
+      <created>1706266255204</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1706266255204</updated>
+    </task>
+    <task id="LOCAL-00010" summary="additional codes">
+      <option name="closed" value="true" />
+      <created>1706266263488</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1706266263488</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
