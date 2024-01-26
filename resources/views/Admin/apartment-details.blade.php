@@ -98,7 +98,7 @@
                         <h3 class="card-title mb-4">Manage Images</h3>
 
                         <!-- Image Upload Form -->
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('ApartmentImages', ['id'=>  $booking->id])}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="images" class="form-label">Upload Images</label>
@@ -109,15 +109,35 @@
 
                         <!-- Display Uploaded Images -->
 {{--                        @if($booking->images->count() > 0)--}}
-                            <h5 class="mt-4">Uploaded Images:</h5>
-                            <div class="row mt-3">
-{{--                                @foreach($booking->images as $image)--}}
-{{--                                    <div class="col-md-3 mb-3">--}}
-{{--                                        <img src="{{ asset('imagename/' . $image->image_path) }}" class="img-fluid" alt="Apartment Image">--}}
-{{--                                    </div>--}}
-{{--                                @endforeach--}}
+                        <!-- Fancy Image Carousel Section -->
+                        <!-- Fancy Image Carousel Section -->
+                        <h5 class="mt-4">Uploaded Images:</h5>
+
+                        @if($images->count() > 0)
+                            <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    @foreach($images as $key => $image)
+                                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                            <img src="{{ asset('ApartmentImages/' . $image->image) }}" class="d-block w-100 img-fluid" style="max-height: 400px;" alt="Apartment Image">
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
-{{--                        @else--}}
+                        @else
+                            <div class="text-center bg-light p-3 mt-4">
+                                <p class="mb-0">No images uploaded for this apartment.</p>
+                            </div>
+                        @endif
+
+                        {{--                        @else--}}
 {{--                            <p class="mt-4">No images uploaded for this apartment.</p>--}}
 {{--                        @endif--}}
                     </div>

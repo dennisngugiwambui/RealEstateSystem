@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e20a21fc-9f41-4668-9d1d-00523f9ce25a" name="Changes" comment="additional codes">
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/apartment-details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/booking.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/booking.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ApartmentImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ApartmentImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_01_26_100746_create_apartment_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_01_26_100746_create_apartment_images_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/apartment-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/apartment-details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -221,7 +221,7 @@
       <workItem from="1706111391040" duration="20000" />
       <workItem from="1706112799221" duration="2770000" />
       <workItem from="1706182465435" duration="21912000" />
-      <workItem from="1706251237937" duration="12292000" />
+      <workItem from="1706251237937" duration="14785000" />
     </task>
     <task id="LOCAL-00001" summary="additional codes">
       <option name="closed" value="true" />
@@ -271,7 +271,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706223774936</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="additional codes">
+      <option name="closed" value="true" />
+      <created>1706263687368</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706263687368</updated>
+    </task>
+    <task id="LOCAL-00008" summary="additional codes">
+      <option name="closed" value="true" />
+      <created>1706263696541</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1706263696541</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

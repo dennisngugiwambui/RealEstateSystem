@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Apartment;
+use App\Models\ApartmentImage;
 use App\Models\ApartmentRoom;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -175,11 +176,12 @@ class HomeController extends Controller
                 }
 
                 $rooms = ApartmentRoom::where('apartmentId', $id)->get();
+                $images = ApartmentImage::where('apartmentId', $id)->get();
 
                // $rooms = ApartmentRoom::where('apartmentId', $id)->get();
 
 
-                return view('Admin.apartment-details', compact('booking', 'rooms'));
+                return view('Admin.apartment-details', compact('booking', 'rooms', 'images'));
             }
         } else {
             return view('auth.login');

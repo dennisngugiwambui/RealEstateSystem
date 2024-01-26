@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Apartment;
+use App\Models\ApartmentImage;
 use App\Models\ApartmentRoom;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -197,6 +198,30 @@ class PageController extends Controller
         Toastr::success('room registered successfully', 'success');
 
         return redirect()->back()->with('success', 'room registered successfully.');
+    }
+
+    public function ApartmentImages(Request $request)
+    {
+        $apartment = Apartment::find($request->id);
+
+        foreach ($request->images as $imageFile) {
+            $image = new ApartmentImage();
+
+            $image->apartmentId = $apartment->id;
+            $image->apartmentName = $apartment->name;
+
+            $filename = time() . '_' . $imageFile->getClientOriginalName(); // You may use a more complex naming strategy if needed
+            $imageFile->move('ApartmentImages', $filename);
+            $image->image = $filename;
+
+            $image->save();
+            //dd($image);
+        }
+
+        Toastr::success('room registered successfully', 'success');
+
+        return redirect()->back()->with('success', 'room registered successfully.');
+
     }
 
 

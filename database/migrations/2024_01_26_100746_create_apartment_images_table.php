@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('apartment_images', function (Blueprint $table) {
             $table->id();
+            $table->string('apartmentId');
+            $table->string('apartmentName');
+            $table->string('image');
             $table->timestamps();
         });
     }

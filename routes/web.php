@@ -49,4 +49,5 @@ Route::post('/UserAparments',[App\Http\Controllers\PageController::class, 'UserA
 Route::get('/apartment_details/{id}', [App\Http\Controllers\HomeController::class, 'apartment_details'])->name('apartment_details');
 
 Route::post('/ApartmentDetail', [App\Http\Controllers\PageController::class, 'ApartmentDetail'])->name('ApartmentDetail');
+Route::post('/ApartmentImages/{id}', [App\Http\Controllers\PageController::class, 'ApartmentImages'])->name('ApartmentImages');
 
