@@ -98,20 +98,20 @@
                         </div>
 
                         <div class="mt-4">
-                            <h5>Skills</h5>
+
                             <ul class="list-inline">
-                                <li class="list-inline-item badge badge-pill badge-success">Web Development</li>
-                                <li class="list-inline-item badge badge-pill badge-success">UI/UX Design</li>
-                                <li class="list-inline-item badge badge-pill badge-success">Database Management</li>
+                                <li class="list-inline-item badge badge-pill badge-success">I am</li>
+                                <li class="list-inline-item badge badge-pill badge-success">the </li>
+                                <li class="list-inline-item badge badge-pill badge-success">Admin</li>
                             </ul>
                         </div>
 
                         <div class="mt-4">
                             <h5>Social Media</h5>
                             <ul class="list-inline social-media-icons">
-                                <li class="list-inline-item"><i class="fab fa-facebook"></i></li>
-                                <li class="list-inline-item"><i class="fab fa-whatsapp"></i></li>
-                                <li class="list-inline-item"><i class="fas fa-phone"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-facebook"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-whatsapp"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-phone"></i></li>
                             </ul>
                         </div>
                     </div>

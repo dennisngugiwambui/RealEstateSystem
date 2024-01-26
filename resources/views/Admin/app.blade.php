@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="{{asset('Admin/assets/css/slicknav.min.css')}}">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <!-- others css -->
     <link rel="stylesheet" href="{{asset('Admin/assets/css/typography.css')}}">
     <link rel="stylesheet" href="{{asset('Admin/assets/css/default-css.css')}}">

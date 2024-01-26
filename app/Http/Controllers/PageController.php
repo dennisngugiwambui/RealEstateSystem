@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 
+use App\Models\Apartment;
+use App\Models\ApartmentRoom;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\ProfileImage;
@@ -141,6 +143,60 @@ class PageController extends Controller
         Toastr::success($message,'success');
         //FacadesAlert::alert('success', $message)->persistent();//so wako wrong kwa iyo do
         return back()->with('success', $message);
+    }
+
+    public function UserAparments(Request $request)
+    {
+        $apartment = new Apartment();
+
+        $apartment->name=$request->name;
+        $apartment->county=$request->county;
+        $apartment->location=$request->location;
+        $apartment->bedroom=$request->bedroom;
+        $apartment->bathroom=$request->bathroom;
+        $apartment->description=$request->description;
+        //$apartment->mainImage = base64_encode(file_get_contents($request->file('mainImage')->path()));
+        $image = $request->mainImage;
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $image->move('imagename', $filename);
+        $apartment->mainImage = $filename;
+
+
+
+
+        $apartment->save();
+
+        //dd($apartment);
+        Toastr::success('apartment registered successfully', 'success');
+
+        return redirect()->back()->with('success', 'apartment registered successfully.');
+
+    }
+
+    public function ApartmentDetail(Request $request)
+    {
+        $apartment = Apartment::find($request->id);
+
+        if (!$apartment) {
+            // Apartment not found, handle the situation (e.g., show an error message).
+            Toastr::error('Apartment not found', 'error');
+            return redirect()->back()->with('error', 'Apartment not found.');
+        }
+
+        $detail = new ApartmentRoom();
+        $detail->apartmentId = $request->id;
+        $detail->apartmentName=$apartment->name;
+        $detail->room = $request->room;
+        $detail->price= $request->price;
+        $detail->booked_by='N/A';
+        $detail->booked_on='N/A';
+
+        //dd($detail);
+        $detail->save();
+
+        Toastr::success('room registered successfully', 'success');
+
+        return redirect()->back()->with('success', 'room registered successfully.');
     }
 
 

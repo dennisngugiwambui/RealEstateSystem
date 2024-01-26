@@ -44,4 +44,9 @@ Route::get('/user_details/{id}', [App\Http\Controllers\HomeController::class, 'u
 Route::post('/usertype_change/{id}',[App\Http\Controllers\PageController::class, 'ChangeUsertype'])->name('usertype_change');
 
 Route::post('/status_change/{id}', [App\Http\Controllers\PageController::class, 'status_change'])->name('status_change');
+Route::post('/UserAparments',[App\Http\Controllers\PageController::class, 'UserAparments'])->name('UserAparments');
+
+Route::get('/apartment_details/{id}', [App\Http\Controllers\HomeController::class, 'apartment_details'])->name('apartment_details');
+
+Route::post('/ApartmentDetail', [App\Http\Controllers\PageController::class, 'ApartmentDetail'])->name('ApartmentDetail');
 

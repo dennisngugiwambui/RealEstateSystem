@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Apartment;
+use App\Models\ApartmentRoom;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\UserDetail;
@@ -78,7 +80,8 @@ class HomeController extends Controller
             if ($usertype != 'admin') {
                 return view('Users.book_property');
             } else {
-                return view('Admin.booking');
+                $booking=Apartment::all();
+                return view('Admin.booking', compact('booking'));
             }
         } else {
             return view('auth.login');
@@ -148,6 +151,35 @@ class HomeController extends Controller
                 }
 
                 return view('Admin.user_details', compact('users'));
+            }
+        } else {
+            return view('auth.login');
+        }
+
+    }
+
+    public function apartment_details($id)
+    {
+        if (Auth::check()) {
+            $usertype = Auth::user()->usertype;
+
+            if ($usertype != 'admin') {
+                return view('Users.index');
+            } else {
+                $booking = Apartment::find($id);
+
+                if (!$booking) {
+                    // Handle the case where the user with the specified ID is not found
+                    // You might want to redirect or show an error message
+                    return view('Admin.index')->with('error', 'User not found');
+                }
+
+                $rooms = ApartmentRoom::where('apartmentId', $id)->get();
+
+               // $rooms = ApartmentRoom::where('apartmentId', $id)->get();
+
+
+                return view('Admin.apartment-details', compact('booking', 'rooms'));
             }
         } else {
             return view('auth.login');
