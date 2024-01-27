@@ -56,38 +56,21 @@
 
     <div class="container-fluid p-0">
         <h1 class="h3 mb-3"><strong>Tenants</strong> Dashboard</h1>
-
         <div class="row row-cols-1 row-cols-md-2 g-4">
-            <!-- Example property card -->
-            <div class="col">
-                <div class="card">
-                    
-                    <img src="{{ asset('Homepage/images/img_4.jpg') }}" class="card-img-top" alt="Property Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Property Title</h5>
-                        <p class="card-text">Property Details Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="card-text"><strong>Contact:</strong> Property Contact Info</p>
-                        <a href="/book-property" class="btn btn-primary">Book</a>
+            @foreach($image as $image)
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ asset('imagename/' . $image->mainImage) }}" class="card-img-top" alt="Property Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$image->name}}</h5>
+                            <p class="card-text">{{$image->description}}</p>
+                            <p class="card-text"><strong>County:</strong> {{$image->county}}</p>
+                            <a href="/book-property" class="btn btn-primary">Book</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- End of example property card -->
-
-            <!-- Add more cards as needed -->
-
-            <div class="col">
-                <div class="card">
-                    <img src="path/to/property-image.jpg" class="card-img-top" alt="Property Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Property Title</h5>
-                        <p class="card-text">Property Details Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="card-text"><strong>Contact:</strong> Property Contact Info</p>
-                        <a href="#" class="btn btn-primary">Book</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 @endsection

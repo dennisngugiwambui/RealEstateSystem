@@ -40,25 +40,83 @@
                                 <div class="mb-3 me-md-3">
                                     <label for="apartmentName" class="form-label">Apartment Name</label>
                                     <select class="form-select apartment" id="apartment" name="apartment" onchange="updateRoomOptions(this.value)">
-                                        <option value="" selected>Select Apartment</option>
-                                        <option value="apartment1">Apartment 1</option>
-                                        <option value="apartment2">Apartment 2</option>
+                                        <option value="" selected disabled hidden="">Select Apartment</option>
+                                        @foreach($apartments as $apartment)
+                                            <option value="{{ $apartment->id }}">{{ $apartment->name }}</option>
+                                        @endforeach
                                         <!-- Add more options as needed -->
                                     </select>
                                 </div>
 
-                                <div class="mb-3 me-md-3">
-                                    <label for="room" class="form-label">Room</label>
-                                    <select class="form-select" id="room" name="room">
-                                        <option value="" selected>Select Room</option>
-                                        <!-- Options will be dynamically updated using JavaScript -->
-                                    </select>
+                                <div class="mb-3 me-md-3" id="roomContainer">
+
+                                        <label for="room" class="form-label">Room</label>
+                                        <select class="form-select" id="room" name="room" onchange="updatePrice(this)">
+                                            <option value="" selected disabled hidden="">Select Room</option>
+                                        </select>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="price" class="form-label">Price</label>
-                                    <input type="text" class="form-control" id="price" name="price" value="$1500" readonly>
+                                    <input type="text" class="form-control" id="price" name="price" disabled />
                                 </div>
+
+
+                                <script>
+
+                                    const selectApartment = document.querySelector("#apartment");
+                                    const selectRoom = document.querySelector("#room");
+                                    const priceElem = document.querySelector("#price");
+
+                                    console.log(priceElem);
+
+                                    function updatePrice(room){
+                                        for (let i = 0; i < room.children.length; i++) {
+                                            let cur = room.children.item(i);
+
+                                            if (cur.value === room.value){
+                                                priceElem.value = cur.getAttribute("price");
+                                            }
+                                        }
+
+                                    }
+
+                                    function updateRoomOptions(id){
+                                        fetch(`/apartments/${id}/rooms`).then((response)=>{
+                                            return response.json()
+                                        }).then((rooms)=>{
+                                            if(rooms instanceof Array){
+                                                console.log(rooms);
+                                                selectRoom.innerHTML = '';
+                                                const option = new Option("Select Room", "", false, true);
+                                                option.hidden = true;
+                                                option.disabled = true;
+                                                selectRoom.appendChild(option);
+
+                                                rooms.forEach(room => {
+                                                    let tempOp = new Option(room.room, room.id);
+                                                    tempOp.setAttribute("price", room.price);
+                                                    selectRoom.appendChild(tempOp);
+                                                })
+
+                                                priceElem.value = "";
+
+                                            }else{
+                                                console.log("Not found")
+                                            }
+                                        })
+                                    }
+
+                                    selectApartment.addEventListener('change', function() {
+                                        updateRoomOptions(this.value);
+                                    });
+
+                                    console.log(selectRoom);
+
+
+                                </script>
+
+
                             </div>
 
 
@@ -126,69 +184,14 @@
 
 
 
-            <script>
-                document.getElementById('editPhoneBtn').addEventListener('click', function() {
-                    document.getElementById('phone').readOnly = false;
-                    document.getElementById('phone').focus();
-                    document.getElementById('editPhoneBtn').style.display = 'none';
-                    document.getElementById('updatePhoneBtn').style.display = 'inline-block';
-                });
-
-                document.getElementById('updatePhoneBtn').addEventListener('click', function() {
-                    document.getElementById('phone').readOnly = true;
-                    document.getElementById('editPhoneBtn').style.display = 'inline-block';
-                    document.getElementById('updatePhoneBtn').style.display = 'none';
-                });
-            </script>
 
 
-
-            <script>
-                window.onload = function() {
-                    updateRoomOptions(document.getElementById('apartment').value);
-                };
-
-                function updateRoomOptions(selectedApartment) {
-                    const vacantRooms = {
-                        apartment1: ['A101', 'A102', 'A103'],
-                        apartment2: ['B201', 'B202', 'B203'],
-                        // Add more options as needed
-                    };
-
-                    const roomSelect = document.getElementById('room');
-                    roomSelect.innerHTML = ''; // Clear existing options
-
-                    const defaultOption = document.createElement('option');
-                    defaultOption.value = '';
-                    defaultOption.text = 'Select Room';
-                    defaultOption.selected = true;
-                    defaultOption.disabled = true;
-                    roomSelect.appendChild(defaultOption);
-
-                    if (selectedApartment && vacantRooms[selectedApartment]) {
-                        vacantRooms[selectedApartment].forEach(room => {
-                            const option = document.createElement('option');
-                            option.value = room;
-                            option.text = room;
-                            roomSelect.appendChild(option);
-                        });
-                        roomSelect.disabled = false;
-                    } else {
-                        roomSelect.disabled = true;
-                    }
-
-                    // Debugging: Log selected apartment and vacant rooms to console
-                    console.log('Selected Apartment:', selectedApartment);
-                    console.log('Vacant Rooms:', vacantRooms[selectedApartment]);
-                }
+            <!-- Add this div to your HTML to display the rooms -->
 
 
 
 
 
-
-
-            </script>
 
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -212,6 +215,26 @@
                 $("#room").select2({
                     placeholder: "Select a Name",
                     allowClear: true
+                });
+            </script>
+
+            <script>
+                const phoneInput = document.getElementById('phone');
+                const editPhoneBtn = document.getElementById('editPhoneBtn');
+                const updatePhoneBtn = document.getElementById('updatePhoneBtn');
+
+                editPhoneBtn.addEventListener('click', function() {
+                    phoneInput.removeAttribute('readonly');
+                    phoneInput.focus();
+                    editPhoneBtn.style.display = 'none';
+                    updatePhoneBtn.style.display = 'block';
+                });
+
+                updatePhoneBtn.addEventListener('click', function() {
+                    phoneInput.setAttribute('readonly', 'readonly');
+                    editPhoneBtn.style.display = 'block';
+                    updatePhoneBtn.style.display = 'none';
+                    // Here you can add code to send the updated phone number to the server for processing
                 });
             </script>
 

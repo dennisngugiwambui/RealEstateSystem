@@ -10,6 +10,8 @@ class ApartmentRoom extends Model
     use HasFactory;
 
     protected $fillable = [
+        'apartmentId',
+        'apartmentName',
         'room',
         'price',
         ];

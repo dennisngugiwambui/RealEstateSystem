@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\UserDetail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+
 
 use Illuminate\Http\Request;
 
@@ -36,7 +38,9 @@ class HomeController extends Controller
             $usertype = Auth::user()->usertype;
 
             if ($usertype != 'admin') {
-                return view('Users.index');
+
+                $image=Apartment::all();
+                return view('Users.index', compact('image'));
             } else {
                 return view('Admin.index');
             }
@@ -79,7 +83,14 @@ class HomeController extends Controller
             $usertype = Auth::user()->usertype;
 
             if ($usertype != 'admin') {
-                return view('Users.book_property');
+                $apartments = Apartment::all();
+                $rooms = ApartmentRoom::groupBy('apartmentId')
+                    ->select('apartmentId', DB::raw('MIN(id) as min_id'))
+                    ->get()
+                    ->map->pluck('room', 'apartmentId', 'price');
+
+
+                return view('Users.book_property', compact('apartments', 'rooms'));
             } else {
                 $booking=Apartment::all();
                 return view('Admin.booking', compact('booking'));
@@ -89,6 +100,14 @@ class HomeController extends Controller
         }
 
     }
+
+    public function getRooms($id)
+    {
+        $rooms = ApartmentRoom::where('apartmentId', $id)->get();
+        return response()->json($rooms);
+    }
+
+
 
     public function UsersAccounts()
     {

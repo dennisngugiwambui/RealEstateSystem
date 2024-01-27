@@ -30,6 +30,8 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'Profile'])-
 Route::post('/upload-profile-image', [App\Http\Controllers\PageController::class, 'uploadProfileImage'])->name('upload.profile.image');
 Route::post('/UserDetails', [App\Http\Controllers\PageController::class, 'userDetails'])->name('UserDetails');
 Route::get('/book-property', [App\Http\Controllers\HomeController::class, 'PropertyBook'])->name('PropertyBook');
+Route::get('/apartments/{id}/rooms', [App\Http\Controllers\HomeController::class, 'getRooms'])->name('GetRooms');
+
 Route::post('/UserDelete/{id}', [App\Http\Controllers\PageController::class, 'deleteUserDetail'])->name('userDelete');
 Route::get('/my-account', [\App\Http\Controllers\HomeController::class, 'UsersAccounts'])->name('account');
 Route::get('/messages', [App\Http\Controllers\HomeController::class, 'Messaging'])->name('messaging');
