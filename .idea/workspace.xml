@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e20a21fc-9f41-4668-9d1d-00523f9ce25a" name="Changes" comment="additional codes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ApartmentRoom.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ApartmentRoom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Users/book_property.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Users/book_property.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,6 +218,8 @@
       <workItem from="1706251237937" duration="15256000" />
       <workItem from="1706290739945" duration="4260000" />
       <workItem from="1706347486461" duration="8739000" />
+      <workItem from="1706450722049" duration="583000" />
+      <workItem from="1706471707758" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="additional codes">
       <option name="closed" value="true" />
