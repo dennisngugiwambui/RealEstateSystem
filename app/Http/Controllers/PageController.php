@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Models\ProfileImage;
 use App\Models\UserDetail;
 use Brian2694\Toastr\Facades\Toastr;
+use AfricasTalking\SDK\AfricasTalking;
+
 
 
 class PageController extends Controller
