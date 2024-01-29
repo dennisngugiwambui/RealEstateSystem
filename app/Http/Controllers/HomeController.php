@@ -39,7 +39,7 @@ class HomeController extends Controller
 
             if ($usertype != 'admin') {
 
-                $image=Apartment::all();
+                $image = Apartment::all();
                 return view('Users.index', compact('image'));
             } else {
                 return view('Admin.index');
@@ -74,7 +74,6 @@ class HomeController extends Controller
         // $userDetails=UserDetail::all();
 
 
-
     }
 
     public function PropertyBook()
@@ -92,7 +91,7 @@ class HomeController extends Controller
 
                 return view('Users.book_property', compact('apartments', 'rooms'));
             } else {
-                $booking=Apartment::all();
+                $booking = Apartment::all();
                 return view('Admin.booking', compact('booking'));
             }
         } else {
@@ -106,7 +105,6 @@ class HomeController extends Controller
         $rooms = ApartmentRoom::where('apartmentId', $id)->get();
         return response()->json($rooms);
     }
-
 
 
     public function UsersAccounts()
@@ -125,9 +123,8 @@ class HomeController extends Controller
         if (Auth::id()) {
             $usertype = Auth::user()->usertype;
 
-            if ($usertype == 'admin')
-            {
-                $users=User::all();
+            if ($usertype == 'admin') {
+                $users = User::all();
                 return view('Admin.users', compact('users'));
             } else {
                 return view('Users.index');
@@ -197,7 +194,7 @@ class HomeController extends Controller
                 $rooms = ApartmentRoom::where('apartmentId', $id)->get();
                 $images = ApartmentImage::where('apartmentId', $id)->get();
 
-               // $rooms = ApartmentRoom::where('apartmentId', $id)->get();
+                // $rooms = ApartmentRoom::where('apartmentId', $id)->get();
 
 
                 return view('Admin.apartment-details', compact('booking', 'rooms', 'images'));
@@ -211,23 +208,18 @@ class HomeController extends Controller
     public function sendSms(string $number, string $message)
     {
         $username = 'dennohosi'; // use 'sandbox' for development in the test environment
-        $apiKey   =  getenv('AT_API_KEY'); // use your sandbox app API key for development in the test environment
-        $AT       = new AfricasTalking($username, $apiKey);
+        $apiKey = getenv('AT_API_KEY'); // use your sandbox app API key for development in the test environment
+        $AT = new AfricasTalking($username, $apiKey);
 
 
         // Get one of the services
-        $sms      = $AT->sms();
+        $sms = $AT->sms();
 
 
         // Use the service
-        $result   = $sms->send([
-            'to'      => $number,
+        $result = $sms->send([
+            'to' => $number,
             'message' => $message,
         ]);
-
-
-
-
-
-
     }
+}
