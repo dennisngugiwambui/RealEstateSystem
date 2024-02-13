@@ -222,4 +222,10 @@ class HomeController extends Controller
             'message' => $message,
         ]);
     }
+
+
+    public function ViwTenants()
+    {
+
+    }
 }
