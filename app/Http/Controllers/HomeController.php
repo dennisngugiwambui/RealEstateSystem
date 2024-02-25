@@ -41,8 +41,7 @@ class HomeController extends Controller
         dd($sessionId);
 
         return response()->json($userId);
-
-        // return view('Users.profile', compact('userDetails'));
+        return view('Users.profile', compact('userDetails'));
 
     }
 
