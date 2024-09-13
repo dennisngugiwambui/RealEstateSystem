@@ -49,7 +49,7 @@ class HomeController extends Controller
     {
         return view('Users.book_property');
     }
-    public function Booked
+    public function BookedProperty
 
 
 }
