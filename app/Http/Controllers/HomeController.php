@@ -50,7 +50,7 @@ class HomeController extends Controller
         return view('Users.book_property');
     }
     public function BookedProperty()
-
+    {}
 
 
 }
